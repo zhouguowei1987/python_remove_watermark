@@ -35,14 +35,13 @@ def remove_pdf_watermark():
                                 os.makedirs(pdf_new_dir)
 
                             pdf_new_file = pdf_new_dir + "/" + file
-
                             for pno in range(doc.page_count):
                                 page = doc[pno]
                                 page.clean_contents()
                                 xref = page.get_contents()[0]
                                 cont = bytearray(page.read_contents())
 
-                                i1 = cont.find(b'/Im%d' % (pno + 1))
+                                i1 = cont.find(b'w\n/Im1')
                                 if i1 < 0:
                                     break
                                 start_i1 = cont.rfind(b'd\nq\nq\n', 0, i1)
@@ -54,6 +53,7 @@ def remove_pdf_watermark():
                                 os.remove(pdf_new_file)
                             doc.save(pdf_new_file)
                             doc.close()
+                            exit(1)
                         except Exception as e:
                             print(e)
                             print("删除文件")
