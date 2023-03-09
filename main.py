@@ -52,7 +52,6 @@ def remove_pdf_watermark():
                                 os.remove(pdf_new_file)
                             doc.save(pdf_new_file)
                             doc.close()
-                            exit(1)
                         except Exception as e:
                             print(e)
                             print("删除文件")
