@@ -19,7 +19,6 @@ def remove_pdf_watermark():
                 files = sorted(os.listdir(root_dir + "/" + subject + "/" + category))
                 for file in files:
                     if ".pdf" in file:
-                        print(file)
                         pdf_file = root_dir + "/" + subject + "/" + category + "/" + file
                         print(pdf_file)
                         try:
